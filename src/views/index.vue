@@ -1,0 +1,1073 @@
+<!--
+ * @Description: 首页
+ * @version: 1.0
+ * @Author: ximusunian
+ * @Date: 2020-09-09 11:31:36
+ * @LastEditors: ximusunian
+ * @LastEditTime: 2020-12-02 10:17:38
+-->
+<template>
+  <div id="index">
+    <!-- 未安装之前展示的假页面 -->
+    <div class="fake" v-if="showFake" @click="showPop">
+      <header>
+        <img lazy-load
+          src="https://jifenqiang.htyvip.com/PComputer/template/images/app_logo.png"
+        />
+        <div id="guide-box">
+          <div class="header-right">
+            <span class="balance">￥0.00</span>
+            <span class="text">提现</span>
+            <van-icon name="arrow" size="16" />
+          </div>
+        </div>
+      </header>
+      <div class="activity-zone">
+        <div>
+          <img src="https://mobile.bktt1.top/mobile/images/invite_banner.png" />
+        </div>
+        <div>
+          <img src="https://mobile.bktt1.top/mobile/images/lucky_draw_banner.png" />
+        </div>
+      </div>
+      <van-notice-bar color="#666666" background="#FFF" left-icon="volume-o"
+        >任务随时更新；每天15点-20点大量任务上线</van-notice-bar
+      >
+      <div class="container">
+        <div class="fast-task">
+          <p class="task-title first">标准任务</p>
+          <van-cell-group>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <img src="https://mobile.bktt1.top/mobile/images/1.png" />
+                  <div class="task-list-item-left-desc">
+                    <span>唐***</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">+￥1.50</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <img src="https://mobile.bktt1.top/mobile/images/3.png" />
+                  <div class="task-list-item-left-desc">
+                    <span>花***</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">+￥2.00</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <img src="https://mobile.bktt1.top/mobile/images/2.png" />
+                  <div class="task-list-item-left-desc">
+                    <span>惠***</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">+￥1.50</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <img src="https://mobile.bktt1.top/mobile/images/7.png" />
+                  <div class="task-list-item-left-desc">
+                    <span>贷***</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">+￥1.80</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <img src="https://mobile.bktt1.top/mobile/images/4.png" />
+                  <div class="task-list-item-left-desc">
+                    <span>封***</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">+￥2.00</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <img src="https://mobile.bktt1.top/mobile/images/5.png" />
+                  <div class="task-list-item-left-desc">
+                    <span>诛***</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">+￥2.00</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <img src="https://mobile.bktt1.top/mobile/images/6.png" />
+                  <div class="task-list-item-left-desc">
+                    <span>健***</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">+￥1.50</span>
+              </template>
+            </van-cell>
+          </van-cell-group>
+        </div>
+
+        <div class="plan-task">
+          <p class="task-title">任务预告</p>
+          <van-cell-group>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <div class="task-list-item-left-box">
+                    <span>明天</span>
+                    <span>13:00</span>
+                  </div>
+                  <div class="task-list-item-left-desc">
+                    <span>天****</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">￥1.50</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <div class="task-list-item-left-box">
+                    <span>明天</span>
+                    <span>13:00</span>
+                  </div>
+                  <div class="task-list-item-left-desc">
+                    <span>网****</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">￥2.00</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <div class="task-list-item-left-box">
+                    <span>明天</span>
+                    <span>13:00</span>
+                  </div>
+                  <div class="task-list-item-left-desc">
+                    <span>王****</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">￥1.80</span>
+              </template>
+            </van-cell>
+            <van-cell>
+              <template #title>
+                <div class="task-list-item-left">
+                  <div class="task-list-item-left-box">
+                    <span>明天</span>
+                    <span>13:00</span>
+                  </div>
+                  <div class="task-list-item-left-desc">
+                    <span>三****</span>
+                    <span>剩余100+份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">￥1.50</span>
+              </template>
+            </van-cell>
+          </van-cell-group>
+        </div>
+      </div>
+    </div>
+    <!-- 安装证书之后真是首页 -->
+    <div class="real"  v-else>
+      <!-- 头部 -->
+      <header>
+        <img lazy-load
+          src="https://jifenqiang.htyvip.com/PComputer/template/images/app_logo.png"
+        />
+        <div id="guide-box">
+          <div class="header-right" @click="toWithdrawal">
+            <span class="balance">￥{{userInfo.amount? tFixed(userInfo.amount): "0.00"}}</span>
+            <span class="text">提现</span>
+            <van-icon name="arrow" size="16" />
+          </div>
+        </div>
+      </header>
+
+      <!-- 活动banner -->
+      <div class="activity-zone">
+        <div @click="toInvite">
+          <img src="https://mobile.bktt1.top/mobile/images/invite_banner.png" />
+        </div>
+        <div @click="toSafar">
+          <img src="https://mobile.bktt1.top/mobile/images/lucky_draw_banner.png" />
+        </div>
+      </div>
+
+      <!-- 通知 -->
+      <van-notice-bar color="#666666" background="#FFF" left-icon="volume-o"
+        >任务随时更新；每天15点-20点大量任务上线</van-notice-bar
+      >
+
+      <!-- 进行中的任务 -->
+      <div class="box" v-if="Object.keys(goingTask).length !== 0">
+        <div class="tasking" @click="toDetail(goingTask)">
+          <div class="tasking-left">
+            <img :src="goingTask.thumb" class="tasking-left-img" />
+            <img
+              src="https://mobile.bktt1.top/mobile/images/alarm_clock.gif"
+              class="tasking-left-clock"
+            />
+            <span>任务进行中...</span>
+          </div>
+          <div class="tasking-right">+￥{{ tFixed(goingTask.amount) }}</div>
+        </div>
+      </div>
+
+      <!-- 任务 -->
+      <div class="container">
+        <!-- 快速任务 -->
+        <div class="fast-task" v-if="taskList.length != 0">
+          <p class="task-title first">标准任务</p>
+          <van-cell-group>
+            <van-cell
+              center
+              @click="checkApp(item)"
+              v-for="(item, index) in taskList"
+              :key="index"
+            >
+              <template #title>
+                <div class="task-list-item-left">
+                  <img :src="item.thumb" />
+                  <div class="task-list-item-left-desc">
+                    <span>{{ translateStr(item.appName) }}</span>
+                    <span>剩余{{ translateNum(item.kucun) }}份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">+￥{{ tFixed(item.amount) }}</span>
+              </template>
+            </van-cell>
+          </van-cell-group>
+        </div>
+
+        <div class="plan-task" v-if="planTaskList.length != 0">
+          <p class="task-title">任务预告</p>
+          <van-cell-group>
+            <van-cell
+              center
+              @click="planToast"
+              v-for="(item, index) in planTaskList"
+              :key="index"
+            >
+              <template #title>
+                <div class="task-list-item-left">
+                  <div class="task-list-item-left-box">
+                    <span>{{ getTimeFlag(item.creationtime) }}</span>
+                    <span>{{ getFormeDate(item.creationtime) }}</span>
+                  </div>
+                  <div class="task-list-item-left-desc">
+                    <span>{{ translateStr(item.appName) }}</span>
+                    <span>剩余{{ translateNum(item.kucun) }}份</span>
+                  </div>
+                </div>
+              </template>
+              <template #right-icon>
+                <span class="task-list-item-amount">￥{{ tFixed(item.amount) }}</span>
+              </template>
+            </van-cell>
+          </van-cell-group>
+        </div>
+      </div>
+
+      <van-dialog
+        v-model="show"
+        show-cancel-button
+        confirmButtonColor="#FF5502"
+        cancelButtonColor="#A7A7A7"
+        @confirm="confirmAbandon"
+      >
+        <p class="repeatTips">
+          不能同时抢多个任务！是否放弃上个任务领取该任务？
+        </p>
+      </van-dialog>
+    </div>
+    
+    <van-overlay
+      :show="isShowPop"
+      @click="isShowPop = false"
+    >
+      <!-- <install :type="type"></install> -->
+      <div class="network_box">
+        <div class="box">
+          <div class="top">
+            <img src="@/assets/images/net_close.png" class="close_img" @click="closeBox"/>
+          </div>
+          <img src="@/assets/images/net_logo.png" class="new_logo" />
+          <div class="bottom" v-if="type == 1">
+            <div class="tips">
+              <p>需要开启助手才能做任务</p>
+              <p>如打开失败，请重新安装</p>
+            </div>
+            <div class="operation">
+              <span class="download" @click="download">重新下载</span>
+              <span class="wake" @click="openApp">打开助手</span>
+            </div>
+          </div>
+          <div v-if="type == 0">
+            <div class="tips">
+              <p>需要开启助手才能做任务</p>
+            </div>
+            <div class="operation1" style="text-align: center">
+              <span class="wake" id="newDownload" @click="download">立即安装</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </van-overlay>
+
+  </div>
+</template>
+
+<script>
+import { Icon, NoticeBar, Cell, CellGroup, Toast, Overlay, Dialog, Lazyload, Image as VanImage } from "vant";
+import {
+  filterTask,
+  filterGoingTask,
+  filterStandardTask,
+  taskNameTranslate,
+  taskNumTranslate,
+  getTime,
+  getTimeFlag,
+  tFixed
+} from "@/utils/utils";
+import Clipboard from "clipboard";
+// import install from "@/views/validationModel/install"
+export default {
+  name: "index",
+  components: {
+    // install,
+    [Icon.name]: Icon,
+    [NoticeBar.name]: NoticeBar,
+    [Cell.name]: Cell,
+    [CellGroup.name]: CellGroup,
+    [Toast.name]: Toast,
+    [Overlay.name]: Overlay,
+    [Dialog.Component.name]: Dialog.Component,
+    [VanImage.name]: VanImage
+  },
+  data() {
+    return {
+      showFake: true,           // 是否显示假页面
+      isShowPop: false,         // 显示安装提示
+      hasBindWeChat: false,     // 是否绑定微信
+      hasBindPhone: false,      // 是否绑定手机号
+      show: false,
+      taskList: [],             // 任务列表
+      planTaskList: [],         // 计划任务列表
+      goingTask: {},            // 进行中的任务
+      stagingTask: {},
+      task: {},                 // 
+      userInfo: {},
+      type: 0
+    };
+  },
+  created() {
+    let token = localStorage.getItem("token")
+    if(token == undefined || token == null || token == "") {
+      let channelKey = this.$route.query.channelKey
+      let channelUid = this.$route.query.channelUid
+      localStorage.setItem("channelKey", channelKey)
+      localStorage.setItem("channelUid", channelUid)
+      let str = `渠道注册验证-|-|-${channelKey}-|-|-${channelUid}-|-|-渠道注册验证`
+      let force = this.$md5(str)
+      let data = {
+        channelKey: channelKey,
+        channelUid: channelUid,
+        force: force,
+        parentId: 0
+      }
+      this.channelRegister(data)
+    } else {
+      // let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+      // if(userInfo.deviceCode == null) {
+      //   this.showFake = true
+      //   this.type = 0
+      // } else {
+        localStorage.setItem("showFake", false);
+        this.$store.commit("setFake", false)
+        this.showFake = false
+        this.type = 1
+        this.getInfo()
+        this.getTask()
+      // }
+    }
+  },
+  mounted() {},
+  methods: {
+    channelRegister(data) {
+      this.$api.channelRegister(data).then(res => {
+        if(res.success) {
+          localStorage.setItem("token", res.result.strTokey);
+          localStorage.setItem("showFake", res.result.isNew);
+          this.$store.commit("setFake", res.result.isNew)
+          localStorage.setItem("userInfo", JSON.stringify(res.result))
+          this.showFake = res.result.isNew
+          if(res.result.isNew) {
+            this.type = 0
+          } else {
+            this.type = 1
+          }
+        }
+      })
+    },
+    // 是否展示安装证书提示
+    showPop() {
+      this.isShowPop = true
+    },
+    
+    // 获取所有任务
+    getTask() {
+      this.$api
+        .getTask({
+          DeviceModel: "苹果系统",
+          taskerModel: "试玩任务",
+          appMenu: "",
+          IsRec: 1
+        })
+        .then(res => {
+          if (res.success) {
+            this.taskList = filterTask(
+              "标准任务",
+              res.result,
+              filterStandardTask
+            );
+            this.goingTask = filterTask(
+              "标准任务",
+              res.result,
+              filterGoingTask
+            );
+            this.planTaskList = filterTask("计划任务", res.result);
+          }
+        });
+    },
+
+    getInfo() {
+      this.$api.getUserInfo().then(res => {
+        this.userInfo = res.result;
+        localStorage.setItem("userInfo",JSON.stringify(res.result))
+        localStorage.setItem("hasBindPhone", res.result.isBindMobile)
+        localStorage.setItem("hasBindWeChat", res.result.isBindWechat)
+        this.hasBindPhone = res.result.isBindMobile
+        this.hasBindWeChat = res.result.isBindWechat
+      });
+    },
+    // 去详情页
+    toDetail(data) {
+      let isAPP = localStorage.getItem("isApp")
+      if(isAPP == "true") {
+        if(!this.hasBindPhone) {
+          this.$router.push("/bindPhone")
+        } else if(!this.hasBindWeChat) {
+          this.$router.push("/bindWeChat")
+        } else {
+          this.$router.push({ path: "/task", query: { data: JSON.stringify(data) } });
+        }
+      } else {
+        if(!this.hasBindPhone) {
+          this.$router.push("/bindPhone")
+        } else {
+          this.$router.push({ path: "/task", query: { data: JSON.stringify(data) } });
+        }
+      }
+    },
+
+    // -----------------------------------活动banner事件开始------------------------------
+    // 去邀请
+    toInvite() {
+      this.$router.push("/enlightening");
+    },
+    // 去浏览器打开外部活动界面
+    toSafar() {
+      let url = "https://engine.peonyta.com/index/activity?appKey=3FoScyQDrr1vudSLZzWTPHnRnUJ&adslotId=338168";
+      let isAPP = localStorage.getItem("isApp")
+      if(isAPP == "true") {
+        window.webkit.messageHandlers.openSafari.postMessage(url)
+      } else {
+        window.open(url)
+      }
+    },
+    // ------------------------------------活动banner事件结束-----------------------------
+
+    // 抢夺任务
+    checkApp(item) {
+      let isAPP = localStorage.getItem("isApp")
+      if(isAPP == "true") {
+        if(!this.hasBindPhone) {
+          this.$router.push("/bindPhone")
+        } else if(!this.hasBindWeChat) {
+          this.$router.push("/bindWeChat")
+        } else {
+          let {appId, packername, processname, appModel} = item
+          let options = `identify=${packername}&packagename=${processname}&appid=${appId}&istype=${appModel}`
+          this.stagingTask = item
+
+          window.webkit.messageHandlers.checkApp.postMessage(options)
+        }
+      } else {
+        if(!this.hasBindPhone) {
+          this.$router.push("/bindPhone")
+        } else {   
+          let {appId, packername, processname, appModel} = item
+          let options = `identify=${packername}&packagename=${processname}&appid=${appId}&istype=${appModel}`
+          this.stagingTask = item
+          let data = {
+            checkApp: options
+          }
+          this.$api.checkApp(data).then(res => {
+            let jsonData = JSON.parse(res.checkAppCallBack)
+            if (jsonData["isfind"] == 'false') {
+              this.saveFinishKey(jsonData)
+              this.$toast("您已经做过这个任务了")
+            } else if (jsonData["isfind"] == 'true') {
+              this.task = this.stagingTask
+              this.snatchAppTask(jsonData)
+            }
+          })
+        }
+      }
+    },
+
+    // 检测app回调
+    checkAppCallBack(data) {
+      let jsonData = JSON.parse(data)
+      if (jsonData["isfind"] == 'false') {
+        this.saveFinishKey(jsonData)
+        this.$toast("您已经做过这个任务了")
+      } else if (jsonData["isfind"] == 'true') {
+        this.task = this.stagingTask
+        this.snatchAppTask(jsonData)
+      }
+    },
+
+    saveFinishKey(jsonData) {
+      let data = {
+        AppID: jsonData.appid,
+        isKeep: !!this.stagingTask.isKeep,
+        idfa: jsonData.idfa,
+        localIP: jsonData.localIP,
+        iosVersion: jsonData.iosVersion,
+        deviceModel: jsonData.deviceModel,
+        assistantVersion: jsonData.assistantVersion,
+        assistantPackage: jsonData.assistantPackage,
+        localTime: jsonData.localTime,
+        chargeProgress: jsonData.chargeProgress,
+        chargeStatus: jsonData.chargeStatus,
+        deviceStorage: jsonData.deviceStorage,
+        deviceBelong: jsonData.deviceBelong,
+        deviceMemory: jsonData.deviceMemory,
+        operatorCode: jsonData.operatorCode,
+        open_udid: jsonData.open_udid
+      }
+      this.$api.saveFinishKey(data).then(res => {
+        if(res.data.success) {
+          this.getTask()
+        }
+      })
+    },
+
+    // 开始任务
+    snatchAppTask(jsonData) {
+      let data = {
+        AppID: jsonData.appid,
+        isKeep: !!this.task.isKeep,
+        idfa: jsonData.idfa,
+        localIP: jsonData.localIP,
+        iosVersion: jsonData.iosVersion,
+        deviceModel: jsonData.deviceModel,
+        assistantVersion: jsonData.assistantVersion,
+        assistantPackage: jsonData.assistantPackage,
+        localTime: jsonData.localTime,
+        chargeProgress: jsonData.chargeProgress,
+        chargeStatus: jsonData.chargeStatus,
+        deviceStorage: jsonData.deviceStorage,
+        deviceBelong: jsonData.deviceBelong,
+        deviceMemory: jsonData.deviceMemory,
+        operatorCode: jsonData.operatorCode,
+        open_udid: jsonData.open_udid
+      }
+      this.$api.snatchAppTask(data).then(res => {
+        if (res.success) {
+          if (!res.result.isExist) {
+            this.show = true;
+          } else {
+            this.$router.push({ path: "/task", query: { data: JSON.stringify(this.task) } });
+          }
+        } else {
+          this.$toast(res.error);
+        }
+      });
+    },
+
+
+    // 是否绑定手机号
+    isBindMobile() {
+      this.$api.isBindMobile().then(res => {
+        if (res.success) {
+          this.hasBindPhone = res.result
+          localStorage.setItem("hasBindPhone", res.result)
+        } else {
+          this.$toast(res.error);
+        }
+      });
+    },
+
+    // 是否绑定微信
+    isBindWechat() {
+      this.$api.isBindWechat().then(res => {
+        if (res.success) {
+          this.hasBindWeChat = res.result
+          localStorage.setItem("hasBindWeChat", res.result)
+        } else {
+          this.$toast(res.error);
+        }
+      });
+    },
+
+    // 去提现
+    toWithdrawal() {
+      let isAPP = localStorage.getItem("isApp")
+      if(isAPP == "true") {
+        if(!this.hasBindPhone) {
+          this.$router.push("/bindPhone")
+        } else if(!this.hasBindWeChat) {
+          this.$router.push("/bindWeChat")
+        } else {
+          this.$router.push("/withdrawal");
+        }
+      } else {
+        if(!this.hasBindPhone) {
+          this.$router.push("/bindPhone")
+        } else {
+          this.$router.push("/withdrawal");
+        }
+      }
+      
+    },
+
+    // 确实放弃之前任务，进行新任务
+    confirmAbandon() {
+      this.$api.abortSession().then(res => {
+        if (res.success) {
+          this.show = false
+          setTimeout(()=> {
+          this.checkApp(this.task);
+          },150)
+        }
+      });
+    },
+
+    // 任务预告
+    planToast() {
+      Toast("任务还未开始哦");
+    },
+
+    closeBox() {
+      this.isShowPop = false
+      // this.$store.commit("setNetWork", false)
+      // location.reload()
+    },
+
+    download() {
+      let channelKey = localStorage.getItem("channelKey")
+      let channelUid = localStorage.getItem("channelUid")
+      let str = `**channelKey=${channelKey}&&channelUid=${channelUid}**`
+      let clipboard = new Clipboard("#newDownload", {
+        text:() => {
+            return str;
+          }
+      });
+      clipboard.on("success", function() {
+        console.log("success");
+      });
+      clipboard.on("error", function() {
+        console.log("error");
+      });
+      this.$api.getInstallUrl().then(res => {
+        if(res.success) {
+          this.synchronousData()
+          window.location = "https://apps.apple.com/cn/app/id1535787537"
+        }
+      })
+    },
+
+    synchronousData() {
+      let timer = setInterval(() => {
+        this.$api.getUserInfo().then(res => {
+          let data = res.result
+          if(res.result.deviceCode != null){
+            clearInterval(timer)
+            localStorage.setItem("userInfo",JSON.stringify(res.result))
+            localStorage.setItem("hasBindPhone", res.result.isBindMobile)
+            localStorage.setItem("hasBindWeChat", res.result.isBindWechat)
+            location.reload()
+          }
+        });
+      }, 3000)
+      
+    },
+
+    openApp() {
+      window.location = "com.BoyEye.cn:/"
+    },
+
+    // -------------------------------- 工具函数 --------------------------------------------------------
+    // 字符串转化
+    translateStr(str) {
+      return taskNameTranslate(str);
+    },
+    // 数字转化
+    translateNum(num) {
+      return taskNumTranslate(num);
+    },
+    // 日期格式化
+    getTimeFlag(data) {
+      return getTimeFlag(data);
+    },
+    // 时间格式化
+    getFormeDate(data) {
+      return getTime(data, "hh:mm");
+    },
+    tFixed(num) {
+      return tFixed(num)
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+#index {
+  font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, WenQuanYi Micro Hei, "sans-serif" !important;
+  // 头部
+  header {
+    display: flex;
+    padding: 0.3rem 0.387rem;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 3.733rem;
+      height: 0.893rem;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      .balance {
+        color: #f4504c;
+        font-size: 0.45rem;
+        margin-right: 0.12rem;
+        font-family: number;
+      }
+      .text {
+        color: $color66;
+        font-size: 0.373rem;
+        margin-right: 0.16rem;
+      }
+    }
+  }
+
+  // 活动banner
+  .activity-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.387rem;
+    img {
+      width: 4.4rem;
+      height: 1.76rem;
+    }
+    .van-notice-bar {
+      font-size: 0.347rem !important;
+    }
+  }
+
+  // 进行中的任务
+  .box {
+    padding: 0.267rem 0.387rem;
+    .tasking {
+      padding: 0.32rem 0.32rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff6f4;
+      border-radius: 0.19rem;
+      &-left {
+        display: flex;
+        align-items: center;
+        &-img {
+          width: 1.013rem;
+          height: 1.013rem;
+          margin-right: 0.373rem;
+        }
+        &-clock {
+          width: 0.42rem;
+          height: 0.42rem;
+          margin-right: 0.133rem;
+        }
+        span {
+          color: #0bcca9;
+          font-size: 0.4rem;
+        }
+      }
+      &-right {
+        font-size: 0.48rem;
+        font-family: number;
+        color: #f4504c;
+      }
+    }
+  }
+
+  // 任务列表
+  .container {
+    padding: 0.2rem 0.387rem 2.5rem;
+    .task-title {
+      color: $color33;
+      font-size: 0.44rem;
+    }
+    .van-hairline--top-bottom::after {
+      border-width: 0.02667rem 0;
+      border-top: 0;
+    }
+    .van-cell {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .van-cell:last-child::after {
+      position: absolute;
+      box-sizing: border-box;
+      content: " ";
+      pointer-events: none;
+      bottom: 0;
+      border-bottom: 0.02667rem solid #ebedf0;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+    .van-cell::after {
+      left: 0;
+      right: 0;
+    }
+    .fast-task {
+      .task-list-item-left {
+        display: flex;
+        align-items: center;
+        img {
+          width: 1.3328rem;
+          height: 1.3328rem;
+        }
+        &-desc {
+          margin-left: 0.386rem;
+          display: flex;
+          flex-direction: column;
+          span:first-child {
+            font-size: 0.4rem;
+            color: $color33;
+          }
+          span:last-child {
+            font-size: 0.346rem;
+            color: #9a9a9a;
+            margin-top: -0.1rem;
+          }
+        }
+      }
+      .task-list-item-amount {
+        width: 2.6rem;
+        height: 0.853rem;
+        text-align: center;
+        line-height: 0.853rem;
+        border-radius: 0.853rem;
+        background: #fff6f4;
+        font-family: number;
+        font-size: 0.43rem;
+        color: #f44d49;
+      }
+    }
+
+    // 任务预告
+    .plan-task {
+      margin-top: 0.5rem;
+      .task-list-item-left {
+        display: flex;
+        align-items: center;
+        &-box {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          justify-content: center;
+          width: 1.3328rem;
+          height: 1.3328rem;
+          border-radius: 0.2rem;
+          background: #fe712b;
+          color: #fff;
+          span:last-child {
+            margin-top: -0.2rem;
+          }
+        }
+        &-desc {
+          margin-left: 0.386rem;
+          display: flex;
+          flex-direction: column;
+          span:first-child {
+            font-size: 0.4rem;
+            color: $color33;
+          }
+          span:last-child {
+            font-size: 0.346rem;
+            color: #9a9a9a;
+            margin-top: -0.1rem;
+          }
+        }
+      }
+      .task-list-item-amount {
+        font-family: number;
+        font-size: 0.43rem;
+        color: #f44d49;
+      }
+    }
+  }
+
+  .border {
+    height: 0.893rem;
+    width: 3.2rem;
+    justify-content: center;
+    border-radius: 0.2rem;
+    box-shadow: 0px 0px 0 800px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+  }
+
+  .repeatTips {
+    padding: 0.52rem 0.933rem 0.493rem;
+    color: $color33;
+    font-size: 0.426rem;
+    text-align: center;
+  }
+
+  .network_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    .box {
+      width: 74%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.453rem 0.426rem 0.666rem;
+      background-color: #ffffff;
+      border-radius: 0.2rem;
+      .top {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+      }
+      .close_img {
+        width: 0.53rem;
+        height: 0.53rem;
+        right: 0.2rem;
+      }
+      .new_logo {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-top: 0.48rem;
+      }
+      .tips {
+        color: #333;
+        font-size: 0.426rem;
+        margin-top: 0.933rem;
+        text-align: center;
+      }
+      .bottom {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .operation {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.8133rem;
+        font-size: 0.48rem;
+        span {
+          width: 3.2rem;
+          height: 1rem;
+          border-radius: 1rem;
+          line-height: 1rem;
+          text-align: center;
+        }
+        .download {
+          color: #F4370F;
+          border: 1px solid #F4370F;
+        }
+        .wake {
+          color: white;
+          background-image: linear-gradient(#FB6823, #F4370F);
+        }
+      }
+      .operation1 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 0.8133rem;
+        font-size: 0.48rem;
+        span {
+          width: 3.2rem;
+          height: 1rem;
+          border-radius: 1rem;
+          line-height: 1rem;
+          text-align: center;
+        }
+        .wake {
+          color: white;
+          background-image: linear-gradient(#FB6823, #F4370F);
+        }
+      }
+    }
+  }
+}
+</style>
