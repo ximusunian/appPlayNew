@@ -4,7 +4,7 @@
  * @Author: ximusunian
  * @Date: 2020-09-09 11:31:36
  * @LastEditors: ximusunian
- * @LastEditTime: 2020-12-02 10:17:38
+ * @LastEditTime: 2020-12-03 16:36:55
 -->
 <template>
   <div id="index">
@@ -405,7 +405,8 @@ export default {
       stagingTask: {},
       task: {},                 // 
       userInfo: {},
-      type: 0
+      type: 0,
+      timer: null
     };
   },
   created() {
@@ -425,18 +426,18 @@ export default {
       }
       this.channelRegister(data)
     } else {
-      // let userInfo = JSON.parse(localStorage.getItem("userInfo"))
-      // if(userInfo.deviceCode == null) {
-      //   this.showFake = true
-      //   this.type = 0
-      // } else {
+      let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+      if(userInfo.deviceCode == null) {
+        this.showFake = true
+        this.type = 0
+      } else {
         localStorage.setItem("showFake", false);
         this.$store.commit("setFake", false)
         this.showFake = false
         this.type = 1
         this.getInfo()
         this.getTask()
-      // }
+      }
     }
   },
   mounted() {},
@@ -720,8 +721,8 @@ export default {
       let str = `**channelKey=${channelKey}&&channelUid=${channelUid}**`
       let clipboard = new Clipboard("#newDownload", {
         text:() => {
-            return str;
-          }
+          return str;
+        }
       });
       clipboard.on("success", function() {
         console.log("success");
@@ -731,26 +732,59 @@ export default {
       });
       this.$api.getInstallUrl().then(res => {
         if(res.success) {
-          this.synchronousData()
+          // 定时请求小助手，获取设备信息
+          if(this.timer == null) {
+            this.timer = 1
+            this.synchronousData(channelKey, channelUid)
+          }
           window.location = "https://apps.apple.com/cn/app/id1535787537"
         }
       })
     },
 
-    synchronousData() {
+    synchronousData(channelKey, channelUid) {
+      let str = `channelKey=${channelKey}&&channelUid=${channelUid}`
+      let d = {
+        startPlay: str
+      }
       let timer = setInterval(() => {
-        this.$api.getUserInfo().then(res => {
-          let data = res.result
-          if(res.result.deviceCode != null){
-            clearInterval(timer)
-            localStorage.setItem("userInfo",JSON.stringify(res.result))
-            localStorage.setItem("hasBindPhone", res.result.isBindMobile)
-            localStorage.setItem("hasBindWeChat", res.result.isBindWechat)
-            location.reload()
+        this.$api.startPlay(d).then(res => {
+          if(res) {
+            let data = JSON.parse(res.startPlayCallBack)
+            if(data.deviceCode !== "") {
+              let channelKey = localStorage.getItem("channelKey")
+              let channelUid = localStorage.getItem("channelUid")
+              let str = `渠道注册验证-|-|-${channelKey}-|-|-${channelUid}-|-|-渠道注册验证`
+              let force = this.$md5(str)
+              // console.log(data);
+              let params = {
+                force: force,
+                deviceModel: data.deviceModel,
+                strDeviceModel: data.strDeviceModel,
+                deviceChar: data.deviceChar,
+                deviceType: data.deviceType,
+                deviceCode: data.deviceCode,
+                deviceIdentifier: data.deviceIdentifier == "(null)" ? '': data.deviceIdentifier,
+                macChar: data.macChar,
+                strNet: data.strNet,
+                isBreak: data.isBreak,
+                channelUid: channelUid,
+                channelKey: channelKey
+              }
+              this.ChannelUserAppend(params)
+            }
           }
         });
       }, 3000)
-      
+    },
+    // 上报设备信息
+    ChannelUserAppend(data, timer) {
+      this.$api.ChannelUserAppend(data).then(res=> {
+        if(res.success) {
+          localStorage.setItem("userInfo",JSON.stringify(res.result))
+          location.reload()
+        }
+      })
     },
 
     openApp() {

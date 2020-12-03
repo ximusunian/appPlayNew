@@ -38,10 +38,11 @@ const api = {
   checkApp: "https://kf.htyvip.com:12345/checkApp",
   toWake: "https://kf.htyvip.com:12345/toWake",
   receiveAward: "https://kf.htyvip.com:12345/receiveAward",
+  startPlay: "https://kf.htyvip.com:12345/startPlay",
 
   // ---------------------SaaS 接口 --------------------------------
-  channelRegister:"/api/NonAuth/ChannelRegister"
-
+  channelRegister:"/api/NonAuth/ChannelRegister",
+  ChannelUserAppend: "/api/mobile/app/ChannelUserAppend"
 };
 
 const getUserInfo = params => {
@@ -172,6 +173,14 @@ const channelRegister = params => {
   return post(api.channelRegister, params)
 }
 
+const startPlay = params => {
+  return post(api.startPlay, params)
+}
+
+const ChannelUserAppend = params => {
+  return post(api.ChannelUserAppend, params)
+}
+
 export default {
   getUserInfo,
   getTodayCount,
@@ -205,7 +214,9 @@ export default {
   checkApp,
   toWake,
   receiveAward,
+  startPlay,
 
 
-  channelRegister
+  channelRegister,
+  ChannelUserAppend
 };
