@@ -4,7 +4,7 @@
  * @Author: ximusunian
  * @Date: 2020-12-02 09:41:18
  * @LastEditors: ximusunian
- * @LastEditTime: 2020-12-03 16:02:54
+ * @LastEditTime: 2020-12-04 10:15:40
 -->
 <template>
   <div id="start">
@@ -52,7 +52,8 @@ export default {
   mounted() {},
   methods: {
     start() {
-      window.webkit.messageHandlers.openApp.postMessage({});
+      let url = "cn.com.wy.testProduct"
+      window.webkit.messageHandlers.openApp.postMessage({url});
     },
     closeBox() {
       this.noOpen = false

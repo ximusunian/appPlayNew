@@ -39,10 +39,11 @@ const api = {
   toWake: "https://kf.htyvip.com:12345/toWake",
   receiveAward: "https://kf.htyvip.com:12345/receiveAward",
   startPlay: "https://kf.htyvip.com:12345/startPlay",
+  bundleID: "https://kf.htyvip.com:12345/bundleID",
 
   // ---------------------SaaS 接口 --------------------------------
   channelRegister:"/api/NonAuth/ChannelRegister",
-  ChannelUserAppend: "/api/mobile/app/ChannelUserAppend"
+  ChannelUserAppend: "/api/mobile/app/ChannelUserAppend",
 };
 
 const getUserInfo = params => {
@@ -168,6 +169,10 @@ const checkApp = params => {
   return post(api.checkApp, params)
 }
 
+const bundleID = params => {
+  return post(api.bundleID, params)
+}
+
 //  
 const channelRegister = params => {
   return post(api.channelRegister, params)
@@ -215,6 +220,7 @@ export default {
   toWake,
   receiveAward,
   startPlay,
+  bundleID,
 
 
   channelRegister,

@@ -4,7 +4,7 @@
  * @Author: ximusunian
  * @Date: 2020-09-09 11:31:36
  * @LastEditors: ximusunian
- * @LastEditTime: 2020-12-03 16:57:07
+ * @LastEditTime: 2020-12-04 13:09:44
 -->
 <template>
   <div id="app">
@@ -39,6 +39,7 @@
 import {Overlay} from "vant"
 import TabBar from "@/components/TabBar";
 import Checkers from "@/utils/Checkers"
+import Clipboard from "clipboard";
 export default {
   name: "App",
   components: {
@@ -71,10 +72,29 @@ export default {
       this.$store.commit("setNetWork", false)
     },
     download() {
-      window.location = this.downloadUrl
+      let url = this.downloadUrl
+      window.webkit.messageHandlers.wakeAssistant2.postMessage({url})
+      // window.location = this.downloadUrl
     },
     openApp() {
-      window.location = "com.BoyEye.cn:/"
+      let url = "com.BoyEye.cn"
+      let channelKey = localStorage.getItem("channelKey")
+      let channelUid = localStorage.getItem("channelUid")
+      let str = `**channelKey=${channelKey}&&channelUid=${channelUid}&&bundleID=cn.com.wy.testProduct**`
+      console.log(str);
+      let clipboard = new Clipboard(".wake", {
+        text:() => {
+          return str;
+        }
+      });
+      clipboard.on("success", function() {
+        console.log("success");
+      });
+      clipboard.on("error", function() {
+        console.log("error");
+      });
+      window.webkit.messageHandlers.wakeAssistant.postMessage({url})
+      // window.location = "com.BoyEye.cn:/"
     }
   }
 };

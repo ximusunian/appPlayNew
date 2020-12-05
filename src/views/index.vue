@@ -4,7 +4,7 @@
  * @Author: ximusunian
  * @Date: 2020-09-09 11:31:36
  * @LastEditors: ximusunian
- * @LastEditTime: 2020-12-03 16:36:55
+ * @LastEditTime: 2020-12-04 10:41:10
 -->
 <template>
   <div id="index">
@@ -718,7 +718,7 @@ export default {
     download() {
       let channelKey = localStorage.getItem("channelKey")
       let channelUid = localStorage.getItem("channelUid")
-      let str = `**channelKey=${channelKey}&&channelUid=${channelUid}**`
+      let str = `**channelKey=${channelKey}&&channelUid=${channelUid}&&bundleID=cn.com.wy.testProduct**`
       let clipboard = new Clipboard("#newDownload", {
         text:() => {
           return str;
@@ -737,7 +737,8 @@ export default {
             this.timer = 1
             this.synchronousData(channelKey, channelUid)
           }
-          window.location = "https://apps.apple.com/cn/app/id1535787537"
+          window.webkit.messageHandlers.wakeAssistant2.postMessage({})
+          // window.location = "https://apps.apple.com/cn/app/id1535787537"
         }
       })
     },
@@ -747,7 +748,11 @@ export default {
       let d = {
         startPlay: str
       }
+      // let bundleID = {
+      //   bundleID: channelKey
+      // }
       let timer = setInterval(() => {
+        // this.$api.bundleID(bundleID).then(res => {})
         this.$api.startPlay(d).then(res => {
           if(res) {
             let data = JSON.parse(res.startPlayCallBack)
@@ -756,7 +761,6 @@ export default {
               let channelUid = localStorage.getItem("channelUid")
               let str = `渠道注册验证-|-|-${channelKey}-|-|-${channelUid}-|-|-渠道注册验证`
               let force = this.$md5(str)
-              // console.log(data);
               let params = {
                 force: force,
                 deviceModel: data.deviceModel,
